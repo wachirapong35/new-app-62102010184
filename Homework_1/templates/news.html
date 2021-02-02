@@ -1,0 +1,56 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div class="mt">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="touch">
+        <div class="card">
+          <br>
+          <div class="card-header bg-dark text-white text-center"><h5 class="text-center">ค้นหาข่าว</h5></div>
+          <div class="col-sm">
+             <div class="form-outline">
+              <form>
+                <br>
+                <label class="form-label" for="form10Example2">กรอกคำที่ต้องการค้นหาลงด้านล่างได้เลย</label>
+                <input type="text" name="word" class="form-control" placeholder = "ex.โควิด,gold"/>
+                <button type="submit" class="btn btn-dark">Submit</button>
+              </form>
+              <br>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+       <div class="col-md-8">
+      <div class="touch">
+        <div class="card text-left">
+          <div class="card-body">
+            <div class="row">
+              {% for i in news %}
+              <div class="col-md-4 mt-2">
+                <div class="card">
+                  <div class="card-body">
+                    <h5>{{i.title}}</h4>
+                      <p class="card-text text" >{{i.description }}</p>
+                      <br>
+                  </div>
+                  <div class="text-right mr-2 mb-3">
+                    <a href="{{ i.link }}" target = "_blank" class="text-left btn-dark bg-primary btn-lg">Read more</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    </div>
+   
+
+
+{% endblock %}

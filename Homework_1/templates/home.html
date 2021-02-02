@@ -1,0 +1,92 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div class="mt">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="touch">
+        <div class="card">
+          <br>
+          <div class="card-header bg-dark text-white text-center"><h5 class="text-center">สภาพอากาศวันนี้</h5></div>
+          
+            <button style = "font-size: 18px;"type="button" class="btn btn-success text-center" data-toggle="collapse" data-target="#card_hide" data-toggle="tooltip" data-placement="right" title="คลิ้กได้เลย!">ตรวจสอบสภาพอากาศเมืองของคุณ</button>
+            <div id="card_hide" class="collapse">
+             <div class="col">
+             <div class="form-outline">
+              <form>
+                <label class="form-label" for="form10Example2">Country</label>
+                <input type="text" name="city" class="form-control" />
+                <button type="submit" class="btn btn-dark bg-primary">Submit</button>
+              </form>
+              <br>
+            </div>
+            </div>
+            </div>
+            <div class="pl-5" >
+            <p>City : <b>{{weather.city}}, {{weather.country}}</b></p>
+            <p>สภาพอากาศ : {{weather.description}} | {{weather.temperature}} &#8451 <img src="{{weather.url}}"></img>
+            </p>
+            <p>ความเร็วลม : {{weather.wind}} </p>
+            <p>ความชื้น : {{weather.humidity}} </p>
+            <p>ความกดอากาศ : {{weather.pressure}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="touch">
+        <div class="card"> 
+       
+          <br>
+           <div class="card-header bg-dark text-white text-center"><h5 class="text-center">สถานการณ์ COVID-19 ในประเทศไทย</h5></div>
+           <div class="touch"></div>
+           
+            <div class="pl-5"> 
+              <!--<img class="card-img mx-auto " src="https://cdn.pixabay.com/photo/2020/04/24/11/44/coronavirus-5086544_1280.png" alt="Card image" style="width:30%;" >-->
+            <p>👤 ยอดผู้ติดเชื้อ : {{result.Confirmed}} คน</p>
+            <p>💊 รักษาหายแล้ว : {{result.Recovered}} คน</p>
+            <p>😷 กำลังรักษาตัว : {{result.Hospitalized}} คน</p>
+            <p>💀 ยอดผู้เสียชีวิต : <b style="color:red;">{{result.Deaths}}</b> คน</p>
+            <p>⏲ ข้อมูล ณ วันที่ : {{result.UpdateDate}} นาฬิกา</p>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="touch">
+        <div class="card text-left">
+        <div class="card-header bg-dark text-white text-center"><h5 class="text-center"> ข่าวสารเกี่ยวกับ COVID-19 ในประเทศไทย </h5></div>
+          <div class="card-body">
+            <div class="row">
+              {% for i in news %}
+              <div class="col-md-4 mt-2">
+                <div class="card">
+                  <img class="card-img-top" style ="height:200px" src="{{i.img}}" alt="&nbsp&nbsp&nbspเว็ปไซต์นี้ยังไม่มีรูปภาพประกอบ">
+                  <div class="card-body">
+                    <h5>{{i.title}}</h4>
+                      <p class="card-text text" style ="height:120px">{{i.description }}</p>
+                      <br>
+                  </div>
+                  <div class="text-right mr-2 mb-3">
+                    <a href="{{ i.link }}" target = "_blank" class="text-left btn-dark bg-primary btn-lg">Read more</a> <!--btn-outline-primary-->
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+  $('[data-toggle="collapse"]').tooltip();    
+  });
+</script>
+
+{% endblock %}
