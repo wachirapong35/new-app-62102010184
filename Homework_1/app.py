@@ -46,7 +46,7 @@ def home():
 
     return render_template("home.html", weather=weather,result=result,news=news)
 
-def CovidNews(): #ดึงข่าว
+def CovidNews(): #ดรึงข่าว
     url = "http://newsapi.org/v2/top-headlines?country=th&q=%E0%B9%82%E0%B8%84%E0%B8%A7%E0%B8%B4%E0%B8%94&apiKey=8d4a08aa9b474078b7c5f58024ccbae7"
     
     data = urlopen(url).read()
